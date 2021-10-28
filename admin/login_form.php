@@ -9,8 +9,22 @@
     <link rel="stylesheet" href="css/login2.css">
 </head>
 
+<?php
+
+if (isset($_SESSION['login_error']))
+{
+    echo $_SESSION['login_error'];
+
+
+    //Xoá cookie login_error với value giả là "" và thời gian bị đẩy lùi về quá khứ
+    //Time() là hàm lấy thời gian hiện tại
+    setcookie('login_error',"",time()-6000);
+}
+?>
 <body>
+
 <div class="container">
+
     <div class="d-flex justify-content-center h-100">
         <div class="card">
             <div class="card-header">

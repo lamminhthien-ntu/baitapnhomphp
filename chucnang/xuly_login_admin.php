@@ -42,7 +42,8 @@ if (isset($_POST['but_submit'])) {
             $alert =  '<div class="alert alert-danger" role="alert">
   Mật khẩu và tài khoản không hợp lệ
 </div>';
-            setcookie('login_error',$alert);
+//            setcookie('login_error',$alert);
+            $_SESSION['login_error'] = $alert;
             header("Location: ../admin/login_form.php");
         }
     }
