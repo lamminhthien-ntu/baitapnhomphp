@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+        rel="stylesheet">
+        <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="../css/style1.css">
+    <link rel="stylesheet" href="../css/style2.css">
+    <link rel="stylesheet" href="../css/font.css">
+    <title>TT SOCIAL</title>
+    <style>
+        .flex-doc {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            align-items: center;
+        }
+
+        .flex-ngang {
+            display: -webkit-box;
+            display: -moz-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            justify-content: center
+        }
+        img[src*="https://cdn.000webhost.com/000webhost/logo/footer-powered-by-000webhost-white2.png"] {
+display: none;}
+    </style>
+</head>
+<body>
+        <div id='dangnhap' style='height:60vh;width: 60%;margin-left:auto;margin-right:auto;margin-top:18vh' class='post flex-ngang flex-doc animate__animated animate__zoomInUp'>
+            <form action="xulydangnhap.php" method="POST" autocomplete="off" name='dangnhap'>
+                <h2 class="font-lato-light">Đăng nhập</h2>
+                <div class='form-outline '>
+                    <div style="margin-left:20px;" class="flex-doc">
+                        <span class="material-icons-outlined">person_outline</span>
+                        <input class="form-in" type="text" autocomplete="off" name="taikhoan" placeholder="tài khoản" required/>
+                    </div>
+                </div>
+                <div class='form-outline'>
+                    <div style="margin-left:20px;"  class="flex-doc">
+                        <span  class="material-icons-outlined">lock</span>
+                        <input class="form-in" type="password" autocomplete="off" name="matkhau" placeholder="mật khẩu" required/>
+                    </div>
+                </div>
+                <a href="https://google.com" class="font-lato-light float-right" style="color:rgb(71, 69, 110);padding:10px">Quên mật khẩu?</a>
+                <button class="w-100 btn" type="submit" style="background-color: rgb(60, 59, 97);color:white">Đăng nhập</button>
+                <div class='flex-ngang' style="margin-top:20px">
+                    <button class="w-50 btn" type="button" onclick="chuyen()" style="background-color: rgba(60, 59, 97, 0.514);color:white">Đăng kí</button>
+                </div>
+            </form>
+        </div>
+        
+        
+    <div class='row w-100' style="position:fixed">
+        <div class="col-md-10">
+
+        </div>
+        <div class='col-md-2'>
+            <div class='post font-lato-heavy d-md-none animate__animated' style='font-size: 1em;color:rgb(71, 69, 110)' id='checkloidk'>
+                <b>Check lỗi</b>
+                <div class="row no-gutters flex-ngang">
+                    <hr width="90%" color="white" style="opacity: 30%;" />
+                </div>
+                <div id='sudung'>
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+        <div id='dangki' style='height:70vh;width: 60%;margin-left:auto;margin-right:auto;margin-top:15vh' class='post flex-ngang flex-doc animate__animated d-none d-md-none'>
+            <form action="xacnhanmail.php" method="POST" autocomplete="off" name='dangki'>
+                <h2 class="font-lato-light">Đăng kí</h2>
+                <div class='row flex-ngang'>
+                    <div class='form-outline col-md-5'>
+                        <div style="margin-left:20px;" class="flex-doc">
+                            <span class="material-icons-outlined">person_outline</span>
+                            <input class="form-in" onkeyup="kiemtradangki()" type="text" minlength="6" maxlength="25" autocomplete="off" name="taikhoan" id='tendn' placeholder="Tài khoản" required/>
+                        </div>
+                    </div>
+                    <div class='form-outline col-md-5'>
+                        <div style="margin-left:20px;" class="flex-doc">
+                            <span class="material-icons-outlined">email</span>
+                            <input class="form-in" onkeyup="kiemtradangki()" type="email" autocomplete="off" name="email" id='email' placeholder="Email" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class='row flex-ngang'>
+                    <div class='form-outline col-md-5'>
+                        <div style="margin-left:20px;"  class="flex-doc">
+                            <span  class="material-icons-outlined">lock</span>
+                            <input class="form-in" onkeyup="kiemtradangki()" type="password" autocomplete="off" name="matkhau" id='matkhau' placeholder="Mật khẩu" required/>
+                        </div>
+                    </div>
+                    <div class='form-outline col-md-5'>
+                        <div style="margin-left:20px;"  class="flex-doc">
+                            <span  class="material-icons-outlined">lock</span>
+                            <input class="form-in" onkeyup="kiemtradangki()" type="password" autocomplete="off" name="nlmatkhau" id='nhaplai' placeholder="Nhập lại mật khẩu" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class='row flex-ngang'>
+                    <div class='form-outline col-md-5'>
+                        <div style="margin-left:20px;" class="flex-doc">
+                            <span class="material-icons-outlined">badge</span>
+                            <input class="form-in" onkeyup="kiemtradangki()" minlength="2" maxlength="30" type="text" autocomplete="off" name="hoten" id='hoten' placeholder="Tên hiển thị" required/>
+                        </div>
+                    </div>
+                    <div class='form-outline col-md-5'>
+                        <div style="margin-left:20px;" class="flex-doc">
+                            <span class="material-icons-outlined">call</span>
+                            <input class="form-in" onkeyup="kiemtradangki()" type="number" maxlength="10"  autocomplete="off" name="sdt" id='sdt' placeholder="Số điện thoại" required/>
+                        </div>
+                    </div>
+                </div>
+                <div class='row flex-ngang'>
+                    <div class='form-outline col-md-5'>
+                        <div class="flex-doc">
+                            <select class='select-in w-100' name='gioitinh' id='gioitinh' required>
+                                <option value="" disabled selected>Chọn giới tính</option>
+                                <option value="0">Nam</option>
+                                <option value="1">Nữ</option>
+                                <option value="2">Khác</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class='form-outline col-md-5'>
+                        <div style="margin-left:20px;" class="flex-doc">
+                            <span class="material-icons-outlined">date_range</span>
+                            <input class="form-in" onkeyup="kiemtradangki()"  type="text" id='ngaysinh' autocomplete="off" name="ngaysinh" placeholder="Ngày sinh" onfocus="(this.type='date')" required/>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex-ngang">
+                    <button class="w-75 btn" type="submit"  style="background-color: rgb(60, 59, 97);color:white">Đăng kí</button>
+                </div>
+                
+                <div class='flex-ngang' style="margin-top:20px">
+                    <button class="w-50 btn" type="button" onclick="chuyen()" style="background-color: rgba(60, 59, 97, 0.514);color:white">Đăng nhập</button>
+                </div>
+            </form>
+        </div>
+
+</body>
+<script>
+    var flag = true;
+    async function chuyen(){
+        var dn = document.getElementById('dangnhap');
+        var dk = document.getElementById('dangki');
+        var checkloi =document.getElementById('checkloidk');
+        if(flag==true)
+        {
+            checkloi.classList.remove('d-md-none');
+            checkloi.classList.add('animate__backInRight');
+
+            dn.classList.add("animate__backOutLeft");
+            dn.classList.remove("animate__zoomInUp");
+            await sleep(450);
+            dn.classList.add("d-none");
+            dn.classList.add("d-md-none");
+            dn.classList.remove("animate__backOutLeft");
+
+            dk.classList.remove("d-none");
+            dk.classList.remove("d-md-none");
+            dk.classList.add("animate__zoomInUp");
+            flag=false;
+        }
+        else
+        {
+
+            checkloi.classList.remove('animate__backInRight');
+            checkloi.classList.add("animate__backOutUp");
+
+            dk.classList.add("animate__backOutRight");
+            dk.classList.remove("animate__zoomInUp");
+            await sleep(450);
+            checkloi.classList.add('d-md-none');
+            checkloi.classList.remove("animate__backOutUp");
+            dk.classList.add("d-none");
+            dk.classList.add("d-md-none");
+            dk.classList.remove("animate__backOutRight");
+
+            dn.classList.remove("d-none");
+            dn.classList.remove("d-md-none");
+            dn.classList.add("animate__zoomInUp");
+            flag=true;
+        }
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+}
+    
+
+
+
+    function kiemtradangki() {
+                    var email = document.getElementById('email').value;
+                    var tendn = document.getElementById('tendn').value;
+                    var sdt = document.getElementById('sdt').value;
+                    var matkhau = document.getElementById("matkhau").value;
+                    var nhaplai = document.getElementById("nhaplai").value;
+                    var ngaysinh = document.getElementById("ngaysinh").value;
+                    var gioitinh = document.getElementById("gioitinh").value;
+                    var hoten = document.getElementById("hoten").value;
+                  var xhttp = new XMLHttpRequest();
+                  xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                      document.getElementById('sudung').innerHTML =
+                      this.responseText;
+                    }
+                  };
+                  xhttp.open('GET', 'checkdk.php?email='+ email + '&tendn='+ tendn + '&sdt=' + sdt +'&mk=' + matkhau + '&nmk=' + nhaplai + '&ngaysinh=' + ngaysinh + '&hoten=' + hoten + '&gioitinh='+ gioitinh, true);
+                  xhttp.send();
+                }
+
+</script>
+</html>
