@@ -43,7 +43,7 @@ if (isset($_POST['but_submit'])) {
   Mật khẩu và tài khoản không hợp lệ
 </div>';
             setcookie('login_error',$alert);
-            echo "<a href='../admin/login_form.php'>Đăng nhập lại </a>";
+            header("Location: ../admin/login_form.php");
         }
     }
 }
