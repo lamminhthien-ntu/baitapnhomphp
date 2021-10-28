@@ -39,7 +39,10 @@ if (isset($_POST['but_submit'])) {
 //            //Nếu đăng nhập thành công thì flag_table_song = 1;
 //            echo $username;
         } else {
-            echo "<h1>Mật khẩu và tài khoản không hợp lệ<h1>";
+            $alert =  '<div class="alert alert-danger" role="alert">
+  Mật khẩu và tài khoản không hợp lệ
+</div>';
+            setcookie('login_error',$alert);
             echo "<a href='../admin/login_form.php'>Đăng nhập lại </a>";
         }
     }
