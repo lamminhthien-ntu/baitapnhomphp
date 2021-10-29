@@ -40,7 +40,9 @@ kiemtra_level_admin(2);
                     <form action="../chucnang/add_user_admin.php" method="post">
                         <div class="form-group">
                             <label>Username *</label>
-                            <input type="text" name="username" class="form-control" placeholder="Username" autofocus/>
+                            <input type="text" name="username" class="form-control" placeholder="Username" autofocus value="
+<?php if (isset($_COOKIE['username_sticky'])) echo $_COOKIE['username_sticky'];?>
+"/>
                             <p style="color:red;"><?php if (isset($_COOKIE['username'])) echo '*'.$_COOKIE['username'];?></p>
                             <?php if (!empty($errors['username'])) echo $errors['username']; ?>
 
