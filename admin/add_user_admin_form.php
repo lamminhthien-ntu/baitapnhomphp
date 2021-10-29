@@ -5,6 +5,7 @@
 kiemtra_level_admin(2);
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <!-- Head Tag -->
@@ -39,18 +40,15 @@ kiemtra_level_admin(2);
                     <form action="../chucnang/add_user_admin.php" method="post">
                         <div class="form-group">
                             <label>Username *</label>
-                            <input type="text" name="username" class="form-control" placeholder="Username" autofocus
-                                required
-                                   oninvalid="this.setCustomValidity('Username không được để trống')" oninput="setCustomValidity('')"
-                            />
+                            <input type="text" name="username" class="form-control" placeholder="Username" autofocus/>
+                            <p style="color:red;"><?php if (isset($_COOKIE['username'])) echo '*'.$_COOKIE['username'];?></p>
                             <?php if (!empty($errors['username'])) echo $errors['username']; ?>
 
                         </div>
                         <div class="form-group">
                             <label>Password *</label>
-                            <input type="password" name="password" class="form-control" placeholder="Password" autofocus
-                                   required
-                                   oninvalid="this.setCustomValidity('Password không được để trống')" oninput="setCustomValidity('')" />
+                            <input type="password" name="password" class="form-control" placeholder="Password" autofocus/>
+                            <p style="color: red;"><?php if(isset($_COOKIE['password'])) echo '*'.$_COOKIE['password'];?></p>
                             <?php if (!empty($errors['password'])) echo $errors['password']; ?>
                         </div>
 

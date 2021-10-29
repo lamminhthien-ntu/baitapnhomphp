@@ -77,15 +77,51 @@ if (!empty($_POST['add_user']))
         }
     }
 
+   //Username  bao gồm các ký tự chữ cái, chữ số
+    //Độ dài 6-32 ký tự
+    $pattern_username="/^[A-Za-z0-9]{6,32}$/";
 
-    // Validate thong tin
+
+
+
+    // Validate thong tin và gắn cookie
     $errors = array();
+    //Kiểm tra lỗi cho trường username
+
+    //Nếu bỏ trống
+
     if (empty($data['username'])){
         $errors['username'] = 'Chưa nhập username';
+        setcookie('username','Chưa nhập username',time()+1,"/");
+        setcookie('username_sticky',$data['username'],time()+1,"/");
+
     }
+    //Ngược lại kiểm tra độ dài username
+    else if (!preg_match($pattern_username,$data['username']))
+    {
+        $errors['username'] = 'Username phải bao gồm các ký tự chữ cái, chữ số độ dài từ 6 đến 32 ký tự';
+        setcookie('username','Username phải bao gồm các ký tự chữ cái, chữ số, độ dài từ 6 đến 32 ký tự',time()+1,"/");
+        setcookie('username_sticky',$data['username'],time()+1,"/");
+    }
+    else
+    //Nếu đúng trường này thì vẫn giữ lại username, vì các trường khác chưa chắc đã đúng
+    {
+        setcookie('username_sticky',$data['username'],time()+1,"/");
+    }
+
+
+
     if (empty($data['password'])){
         $errors['password'] = 'Chưa nhập password';
+        setcookie('password','Chưa nhập password',time()+1,"/");
     }
+    //Ngược lại kiểm tra độ dài mật khẩu
+    else if (strlen($data['username'])<=4 || strlen($data['username'])>=9)
+    {
+        $errors['password'] = 'Mật khẩu phải từ 4 đến 9 kí tự';
+        setcookie('password','Mật khẩu phải từ 4 đến 9 kí tự',time()+1,"/");
+    }
+
     if (empty($data['level'])){
         $errors['level'] = 'Chưa nhập level';
     }
@@ -99,6 +135,8 @@ if (!empty($_POST['add_user']))
         // Trở về trang danh sách
         header("location: ../admin/index_user.php");
     }
+    else //Khi có errror
+    header("location:../admin/add_user_admin_form.php");
 }
 
 disconnect_db();
