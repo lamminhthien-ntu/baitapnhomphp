@@ -81,6 +81,13 @@ if (!empty($_POST['add_user']))
     //Độ dài 6-32 ký tự
     $pattern_username="/^[A-Za-z0-9]{6,32}$/";
 
+//    Mật khẩu bao gồm các ký chữ cái, chữ số, ký tự đặc biệt, dấu chấm
+//Bắt đầu bằng ký tự in hoa
+//Độ dài 6-32 ký tự
+    $pattern_password="/^([A-Z]){1}([\w_\.!@#$%^&*()]+){5,31}$/";
+
+
+
 
 
 
