@@ -6,7 +6,7 @@ kiemtra_level_admin(1);
 ?>
 <?php
 
-$id = $_GET['id'];
+if (!empty($_GET['id'])) $id = $_GET['id']; else $id = $_SESSION['id'];
 $sql = "SELECT * FROM `nhac` WHERE id_nhac = $id;";
 $row_thucthi = mysqli_query($ketnoi, $sql);
 $row_dulieu = mysqli_fetch_array($row_thucthi);
@@ -51,7 +51,7 @@ $row_dulieu = mysqli_fetch_array($row_thucthi);
                         </div>
                         <div>
                             <label>Tiêu đề nhạc*</label>
-                            <input type="text" name="title" class="form-control" placeholder="Tiêu đề" autofocus required value="<?php echo $row_dulieu['tieude'];?>">
+                            <input type="text" name="title" class="form-control" placeholder="Tiêu đề" autofocus  value="<?php echo $row_dulieu['tieude'];?>">
                             <p style="color:red;"><?php if (isset($_COOKIE['title'])) echo $_COOKIE['title']; ?></p>
                         </div>
                         <div class="form-group">
@@ -71,10 +71,8 @@ $row_dulieu = mysqli_fetch_array($row_thucthi);
                         </div>
                         <div class="form-group">
                             <label>Ca sĩ*</label>
-                            <input name="singer" id="" rows="2" class="form-control" placeholder="Ca sĩ" required value="<?php echo $row_dulieu['casi'];?>">
+                            <input name="singer" id="" rows="2" class="form-control" placeholder="Ca sĩ" value="<?php echo $row_dulieu['casi'];?>">
                             <p style="color:red;"><?php if (isset($_COOKIE['singer'])) echo $_COOKIE['singer']; ?></p>
-                                
-                            
                         </div>
                         <input type="submit" class="btn btn-success btn-block" value="Save Nhạc">
                     </form>

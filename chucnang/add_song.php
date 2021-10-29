@@ -9,7 +9,7 @@ $thoigian = date("d/m/Y");
 if ($_POST['title']=="") setcookie("title","Tên bài hát không được để trống",time()+1,"/");
 if ($_POST['singer']=="") setcookie("singer","Tên ca sĩ không được để trống",time()+1,"/");
 
-if(!empty($_POST['title'])&&!empty($_POST['loi'])&&!empty($_POST['singer']))
+if(!empty($_POST['title'])&&!empty($_POST['singer']))
 {
     $tieude = $_POST['title'];
     $loi    = $_POST['loi'];
