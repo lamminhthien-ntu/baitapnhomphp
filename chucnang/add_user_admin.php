@@ -97,7 +97,7 @@ if (!empty($_POST['add_user']))
 
         );
         // Trở về trang danh sách
-       // header("location: ../admin/index_user.php");
+        header("location: ../admin/index_user.php");
     }
 }
 
