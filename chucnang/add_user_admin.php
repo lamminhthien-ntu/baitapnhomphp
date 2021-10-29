@@ -84,7 +84,7 @@ if (!empty($_POST['add_user']))
 //    Mật khẩu bao gồm các ký chữ cái, chữ số, ký tự đặc biệt, dấu chấm
 //Bắt đầu bằng ký tự in hoa
 //Độ dài 6-32 ký tự
-    $pattern_password="/^([A-Z]){1}([\w_\.!@#$%^&*()]+){5,31}$/";
+    $pattern_password="/^([A-Z]){1}([\w_\]!@#$%^&*()]+){5,31}$/";
 
 
     // Validate thong tin và gắn cookie
@@ -119,10 +119,10 @@ if (!empty($_POST['add_user']))
         setcookie('password','Chưa nhập password',time()+1,"/");
     }
     //Ngược lại kiểm tra độ dài mật khẩu
-    else if (strlen($data['username'])<=4 || strlen($data['username'])>=9)
+    else if (!preg_match($pattern_password,$data['password']))
     {
         $errors['password'] = 'Mật khẩu phải từ 4 đến 9 kí tự';
-        setcookie('password','Mật khẩu phải từ 4 đến 9 kí tự',time()+1,"/");
+        setcookie('password',"Mật khẩu phải bao gồm các ký chữ cái, chữ số, ký tự đặc biệt, dấu chấm \n Bắt đầu bằng ký tự in hoa\n Độ dài 6-32 ký tự",time()+1,"/");
     }
 
     if (empty($data['level'])){
