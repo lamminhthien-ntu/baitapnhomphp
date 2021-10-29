@@ -58,9 +58,9 @@ kiemtra_level_admin(1);
                         </div>
                         <div class="form-group">
                             <label>Ca sĩ*</label>
-                            <textarea name="singer" id="" rows="2" class="form-control" placeholder="Ca sĩ">
-                                <?php if (isset($_COOKIE['singer_sticky'])) echo $_COOKIE['singer_sticky'];?>
-                            </textarea>
+                            <input name="singer" id="" rows="2" class="form-control" placeholder="Ca sĩ"/>
+
+
                             <?php if (isset($_COOKIE['singer'])) echo $_COOKIE['singer']; ?>
                         </div>
                         <input type="submit" class="btn btn-success btn-block" value="Save Nhạc">

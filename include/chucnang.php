@@ -34,7 +34,6 @@ function insert_table($table,$array_col,$array_value){
     }
     $sql = "INSERT INTO `$table`($mang) VALUES ($mang_value)";
     mysqli_query($ketnoi,$sql);
-
 }
 function delete_table($table,$tencot,$id){
     global $ketnoi;
