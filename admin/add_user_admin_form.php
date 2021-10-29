@@ -50,7 +50,8 @@ kiemtra_level_admin(2);
                         <div class="form-group">
                             <label>Password *</label>
                             <input type="text" name="password" class="form-control" placeholder="Password" autofocus
-                                required value="<?php echo !empty($data['password']) ? $data['password'] : ''; ?>" />
+                                   required
+                                   oninvalid="this.setCustomValidity('Password không được để trống')" oninput="setCustomValidity('')" />
                             <?php if (!empty($errors['password'])) echo $errors['password']; ?>
                         </div>
 
