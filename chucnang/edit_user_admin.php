@@ -7,7 +7,7 @@ date_default_timezone_set("Asia/Ho_Chi_Minh");
 $thoigian = date("d/m/Y");
 
 
-if (isset($_GET['id'])) {
+if (isset($_GET['id']) && !empty($_GET['username'])) {
 
     $id = $_GET['id'];
     $username = $_GET['username'];
@@ -47,9 +47,15 @@ if (isset($_GET['id'])) {
             </div>';
     }
 } else {
+    if (empty($username))
     $_SESSION['message'] = '
             <div class="alert alert-danger" role="alert">
-              Sữa user thất bại
+              Username không được trống
+            </div>';
+    else
+        $_SESSION['message'] = '
+            <div class="alert alert-danger" role="alert">
+              Update username thất bại
             </div>';
     header('Location: ../admin/index_user.php');
 }

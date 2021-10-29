@@ -51,8 +51,8 @@ $row_dulieu = mysqli_fetch_array($row_thucthi);
                         </div>
                         <div>
                             <label>Username *</label>
-                            <input type="text" name="username" class="form-control" placeholder="Username" autofocus required value="<?php echo $row_dulieu['username'];?>
-                            oninvalid="this.setCustomValidity('Password không được để trống')" oninput="setCustomValidity('')"
+                            <input type="text" name="username" class="form-control" placeholder="Username" autofocus  value="<?php echo $row_dulieu['username'];?>
+
 ">
                         </div>
                         <div>
