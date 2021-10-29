@@ -8,14 +8,14 @@ $thoigian = date("d/m/Y");
 
 
 //Lưu lại giá trị để người dùng biết đường xem và sửa cho đến khi form xác nhận hợp lệ chứ!
-if (isset($_POST['title'])) setcookie('title_sticky',$_POST['title'],time()+1,"/");
-if (isset($_POST['loi'])) setcookie('loi_sticky',$_POST['loi'],time()+1,"/");
-if (isset($_POST['singer'])) setcookie('singer_sticky',$_POST['singer'],time()+1,"/");
+if (!empty($_POST['title'])) $_SESSION['title_sticky']=$_POST['title'];
+if (!empty($_POST['loi'])) $_SESSION['loi_sticky'] = $_POST['loi'];
+if (!empty($_POST['singer'])) $_SESSION['singer_sticky'] = $_POST['singer'];
 
 //Ở đây không khắt khe như add user admin, mình làm đơn giản là check không được bỏ trống.
-if (!isset($_POST['title'])) setcookie('title','Tên bài hát không được trống',time()+1,"/");
-if (!isset($_POST['loi'])) setcookie('loi','Tên bài hát không được trống',time()+1,"/");
-if (!isset($_POST['singer'])) setcookie('singer','Tên ca sĩ không được trống',time()+1,"/");
+if (empty($_POST['title']))  $_SESSION['title'] = 'Tên bài hát không được trống'; else $_SESSION['title']=null;
+if (empty($_POST['loi'])) setcookie('loi','Tên bài hát không được trống',time()+3,"/");
+if (empty($_POST['singer'])) setcookie('singer','Tên ca sĩ không được trống',time()+3,"/");
 
 if(!empty($_POST['title'])&&!empty($_POST['loi'])&&!empty($_POST['singer']))
 {
@@ -72,7 +72,8 @@ else
             <div class="alert alert-danger" role="alert">
               Thêm bài hát thất bại
             </div>';
-    header('Location: ../admin/add_song_form.php');
+//    var_dump($_SESSION['title']);
+    //header('Location: ../admin/add_song_form.php');
 }
 
 ?>
