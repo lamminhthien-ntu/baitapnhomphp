@@ -41,7 +41,9 @@ kiemtra_level_admin(2);
                         <div class="form-group">
                             <label>Username *</label>
                             <input type="text" name="username" class="form-control" placeholder="Username" autofocus
-                                required value="<?php echo !empty($data['username']) ? $data['username'] : 'Vui lòng nhập '; ?>" />
+                                required value="<?php echo !empty($data['username']) ? $data['username'] : 'Vui lòng nhập '; ?>"
+                                   oninvalid="this.setCustomValidity('Username không được để trống')"
+                            />
                             <?php if (!empty($errors['username'])) echo $errors['username']; ?>
 
                         </div>
