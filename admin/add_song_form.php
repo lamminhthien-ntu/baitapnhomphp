@@ -58,7 +58,9 @@ kiemtra_level_admin(1);
                         </div>
                         <div class="form-group">
                             <label>Ca sĩ*</label>
-                            <input name="singer" id="" rows="2" class="form-control" placeholder="Ca sĩ"/>
+                            <input name="singer" id="" rows="2" class="form-control" placeholder="Ca sĩ" value="
+    <?php if (isset($_COOKIE['singer_sticky'])) echo $_COOKIE['singer_sticky'];?>
+"/>
 
 
                             <?php if (isset($_COOKIE['singer'])) echo $_COOKIE['singer']; ?>

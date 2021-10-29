@@ -72,7 +72,7 @@ else
             <div class="alert alert-danger" role="alert">
               Thêm bài hát thất bại
             </div>';
-    header('Location: ../admin/index.php');
+    header('Location: ../admin/add_song_form.php');
 }
 
 ?>
