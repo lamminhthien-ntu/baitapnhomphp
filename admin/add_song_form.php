@@ -65,7 +65,7 @@ kiemtra_level_admin(1);
 
                             <?php if (isset($_COOKIE['singer'])) echo $_COOKIE['singer']; ?>
                         </div>
-                        <input type="submit" class="btn btn-success btn-block" value="Save Nhạc">
+                        <input type="submit" class="btn btn-success btn-block" value="Save Nhạc" name="btn-submit">
                     </form>
                 </div>
                 <!-- /.container-fluid -->
