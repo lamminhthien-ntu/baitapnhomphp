@@ -3,7 +3,7 @@
 <?php include("../chucnang/kiemtra_level_admin.php");
 //Từ level 2 trở lên được phép vào
 kiemtra_level_admin(2);
-var_dump($_COOKIE);
+//var_dump($_COOKIE);
 ?>
 
 

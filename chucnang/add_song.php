@@ -1,19 +1,14 @@
 <?php
 include("../include/chucnang.php");
-//include ("../chucnang/kiemtra_level_admin.php");
-//kiemtra_level_admin(2);
+include ("../chucnang/kiemtra_level_admin.php");
+kiemtra_level_admin(2);
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 $thoigian = date("d/m/Y");
 
-//Lưu lại giá trị để người dùng biết đường xem và sửa cho đến khi form xác nhận hợp lệ chứ!
-if (isset($_POST['title']))  $_SESSION['title_sticky'] = $_POST['title'];
-if (isset($_POST['loi']))  $_SESSION['loi_sticky'] = $_POST['loi'];
-if (isset($_POST['singer']))  $_SESSION['singer_sticky'] = $_POST['singer'];
 
 //Ở đây không khắt khe như add user admin, mình làm đơn giản là check không được bỏ trống.
-if (empty($_POST['title']))  $_SESSION['title'] = 'Tên bài hát không được trống';
-if (empty($_POST['loi']))  $_SESSION['loi'] = 'Tên bài hát không được trống';
-if (empty($_POST['singer']))  $_SESSION['singer'] = 'Tên ca sĩ không được trống';
+if ($_POST['title']=="") setcookie("title","Tên bài hát không được để trống",time()+1,"/");
+if ($_POST['singer']=="") setcookie("singer","Tên ca sĩ không được để trống",time()+1,"/");
 
 if(!empty($_POST['title'])&&!empty($_POST['loi'])&&!empty($_POST['singer'])&&isset($_POST['btn-submit']))
 {
@@ -70,7 +65,7 @@ else
             <div class="alert alert-danger" role="alert">
               Thêm bài hát thất bại
             </div>';
-//    var_dump($_SESSION);
+//    var_dump($_COOKIE);
     header('Location: ../admin/add_song_form.php');
 }
 

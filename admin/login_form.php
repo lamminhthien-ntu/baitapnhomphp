@@ -1,19 +1,9 @@
-<!--Connect MySQL Database -->
-<?php include('../include/ketnoi.php') ?>
-<!--Headder HTML -->
-<?php include('../include/head.php') ?>
-<!-- Login Processing -->
-<?php include('../chucnang/xuly_login_admin.php'); ?>
-<head>
-    <!-- Login CSS -->
-    <link rel="stylesheet" href="css/login2.css">
-</head>
-
+<?php session_start();ob_start() ?>
 <?php
 
-if (isset($_SESSION['login_error']))
+if (isset($_COOKIE["login_error"]))
 {
-    echo $_SESSION['login_error'];
+    echo $_COOKIE["login_error"];
 
 
     //Xoá cookie login_error với value giả là "" và thời gian bị đẩy lùi về quá khứ
@@ -21,6 +11,17 @@ if (isset($_SESSION['login_error']))
     setcookie('login_error',"",time()-6000);
 }
 ?>
+<!--Connect MySQL Database -->
+<?php include('../include/ketnoi.php') ?>
+<!--Headder HTML -->
+<?php include('../include/head.php') ?>
+<!-- Login Processing -->
+<head>
+    <!-- Login CSS -->
+    <link rel="stylesheet" href="css/login2.css">
+</head>
+
+
 <body>
 
 <div class="container">

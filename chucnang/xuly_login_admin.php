@@ -1,17 +1,19 @@
 <?php
+session_start();
+ob_start();
 include("../include/ketnoi.php");
 //include("../include/chucnang.php");
-session_start();
-$alert = '<div class="alert alert-danger" role="alert">
+
+$alert = "<div class='alert alert-danger' role='alert'>
   Mật khẩu và tài khoản không hợp lệ
-</div>';
+</div>";
 if (isset($_POST['but_submit'])) {
 
     //Để tránh sql injecttion, ta loại bỏ các kí tự thoát ( dấu , hoặc dấu ") thông qua mysqli_real_escape_string
     $username = mysqli_real_escape_string($ketnoi, $_POST['username']);
     $password = mysqli_real_escape_string($ketnoi, $_POST['password']);
     //SQL tạo table user_admin
-//CREATE TABLE `mp3`.`user_admin` ( `id` INT NOT NULL AUTO_INCREMENT , `username` TEXT NOT NULL , `password` TEXT NOT NULL , `level` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
+//CREATE TABLE mp3.`user_admin` ( id INT NOT NULL AUTO_INCREMENT , username TEXT NOT NULL , password TEXT NOT NULL , level INT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;
     if ($username != "" && $password != "") {
 
         $sql_query = "select *  from user_admin where username='" . $username . "' and password='" . $password . "'";
@@ -42,8 +44,7 @@ if (isset($_POST['but_submit'])) {
 //            //Nếu đăng nhập thành công thì flag_table_song = 1;
 //            echo $username;
         } else {
-//            setcookie('login_error',$alert);
-            $_SESSION['login_error'] = $alert;
+            setcookie("login_error",$alert,time()+1,"/");
             header("Location: ../admin/login_form.php");
         }
     }
@@ -51,10 +52,10 @@ if (isset($_POST['but_submit'])) {
 
     if (empty($username) || empty($password))
     {
-        $alert_empty = '<div class="alert alert-danger" role="alert">
+        $alert_empty = "<div class='alert alert-danger' role='alert'>
   Mật khẩu hoặc tài khoản không được để trống
-</div>';
-        $_SESSION['login_error'] = $alert_empty;
+</div>";
+        setcookie("login_error",$alert_empty,time()+1,"/");
         header("Location: ../admin/login_form.php");
     }
 

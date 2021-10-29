@@ -3,6 +3,7 @@
 <?php include("../chucnang/kiemtra_level_admin.php");
 //Từ level 2 trở lên được phép vào
 kiemtra_level_admin(1);
+//var_dump($_COOKIE);
 ?>
 
 <!DOCTYPE html>
@@ -38,15 +39,13 @@ kiemtra_level_admin(1);
                         <div class="form-group">
                             <label>Tiêu đề nhạc*</label>
                             <input type="text" name="title" class="form-control" placeholder="Tiêu đề" autofocus value="
-<?php if (isset($_COOKIE['title_sticky'])) echo $_COOKIE['title_sticky'];?>
 ">
-                            <?php if (isset($_COOKIE['title'])) echo $_COOKIE['title']; ?>
+                            <p style="color:red;"><?php if (isset($_COOKIE['title'])) echo $_COOKIE['title']; ?></p>
                         </div>
                         <div class="form-group">
                             <label>Lời bài hát</label>
                             <textarea name="loi" id="" rows="2" class="form-control"
-                                placeholder="Lời bài hát"><?php if (isset($_COOKIE['loi_sticky'])) echo $_COOKIE['loi_sticky'];?></textarea>
-                            <?php if (isset($_COOKIE['loi'])) echo $_COOKIE['loi']; ?>
+                                placeholder="Lời bài hát"> </textarea>
                         </div>
                         <div class="form-group">
                             <label>Upload nhạc*</label>
@@ -58,12 +57,8 @@ kiemtra_level_admin(1);
                         </div>
                         <div class="form-group">
                             <label>Ca sĩ*</label>
-                            <input name="singer" id="" rows="2" class="form-control" placeholder="Ca sĩ" value="
-    <?php if (isset($_COOKIE['singer_sticky'])) echo $_COOKIE['singer_sticky'];?>
-"/>
-
-
-                            <?php if (isset($_COOKIE['singer'])) echo $_COOKIE['singer']; ?>
+                            <input name="singer" id="" rows="2" class="form-control" placeholder="Ca sĩ" />
+                           <p style="color:red;"><?php if (isset($_COOKIE['singer'])) echo $_COOKIE['singer']; ?></p>
                         </div>
                         <input type="submit" class="btn btn-success btn-block" value="Save Nhạc" name="btn-submit">
                     </form>
