@@ -85,7 +85,7 @@ kiemtra_level_admin(2);
                             <label>Username *</label>
                             <input type="text" name="username" class="form-control" placeholder="Username" autofocus
                                 required
-
+                                   oninvalid="this.setCustomValidity('Username không được để trống')" oninput="setCustomValidity('')"
                             />
                             <?php if (!empty($errors['username'])) echo $errors['username']; ?>
 
@@ -94,7 +94,7 @@ kiemtra_level_admin(2);
                             <label>Password *</label>
                             <input type="password" name="password" class="form-control" placeholder="Password" autofocus
                                    required
-                                  />
+                                   oninvalid="this.setCustomValidity('Password không được để trống')" oninput="setCustomValidity('')" />
                             <?php if (!empty($errors['password'])) echo $errors['password']; ?>
                         </div>
 
