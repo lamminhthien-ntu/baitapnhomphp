@@ -52,6 +52,7 @@ $row_dulieu = mysqli_fetch_array($row_thucthi);
                         <div>
                             <label>Tiêu đề nhạc*</label>
                             <input type="text" name="title" class="form-control" placeholder="Tiêu đề" autofocus required value="<?php echo $row_dulieu['tieude'];?>">
+                            <p style="color:red;"><?php if (isset($_COOKIE['title'])) echo $_COOKIE['title']; ?></p>
                         </div>
                         <div class="form-group">
                             <label>Lời bài hát</label>
@@ -71,6 +72,7 @@ $row_dulieu = mysqli_fetch_array($row_thucthi);
                         <div class="form-group">
                             <label>Ca sĩ*</label>
                             <input name="singer" id="" rows="2" class="form-control" placeholder="Ca sĩ" required value="<?php echo $row_dulieu['casi'];?>">
+                            <p style="color:red;"><?php if (isset($_COOKIE['singer'])) echo $_COOKIE['singer']; ?></p>
                                 
                             
                         </div>
