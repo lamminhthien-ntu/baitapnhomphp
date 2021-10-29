@@ -52,10 +52,30 @@ function add_user($username, $password, $level)
 // Nếu người dùng submit form
 if (!empty($_POST['add_user']))
 {
+
     // Lay data
     $data['username']        = isset($_POST['username']) ? $_POST['username'] : '';
     $data['password']         = isset($_POST['password']) ? $_POST['password'] : '';
     $data['level']    = isset($_POST['level']) ? $_POST['level'] : '';
+
+    // Gọi tới biến toàn cục $conn
+    global $conn;
+
+    // Hàm kết nối
+    connect_db();
+
+    $sql1 = "SELECT * from user_admin";
+    $run_sql1 = mysqli_query($conn,$sql1);
+    while ($row = mysqli_fetch_assoc($run_sql1))
+    {
+        var_dump($row);
+
+        if ($row['username']==$data['username'])
+        {
+            echo "<script>alert('Username này đã tồn tại');window.location = 'http://localhost/baitapnhomphp/admin/index_user.php'</script>";
+            die();
+        }
+    }
 
 
     // Validate thong tin
@@ -77,7 +97,7 @@ if (!empty($_POST['add_user']))
 
         );
         // Trở về trang danh sách
-        header("location: ../admin/index_user.php");
+       // header("location: ../admin/index_user.php");
     }
 }
 
