@@ -9,7 +9,50 @@ kiemtra_level_admin(2);
 <html lang="en">
 <!-- Head Tag -->
 <?php include('head.php'); ?>
+<script>
+    var createAllErrors = function() {
+        var form = $( this ),
+            errorList = $( "ul.errorMessages", form );
 
+        var showAllErrorMessages = function() {
+            errorList.empty();
+
+            // Find all invalid fields within the form.
+            var invalidFields = form.find( ":invalid" ).each( function( index, node ) {
+
+                // Find the field's corresponding label
+                var label = $( "label[for=" + node.id + "] "),
+                    // Opera incorrectly does not fill the validationMessage property.
+                    message = node.validationMessage || 'Invalid value.';
+
+                errorList
+                    .show()
+                    .append( "<li><span>" + label.html() + "</span> " + message + "</li>" );
+            });
+        };
+
+        // Support Safari
+        form.on( "submit", function( event ) {
+            if ( this.checkValidity && !this.checkValidity() ) {
+                $( this ).find( ":invalid" ).first().focus();
+                event.preventDefault();
+            }
+        });
+
+        $( "input[type=submit], button:not([type=button])", form )
+            .on( "click", showAllErrorMessages);
+
+        $( "input", form ).on( "keypress", function( event ) {
+            var type = $( this ).attr( "type" );
+            if ( /date|email|month|number|search|tel|text|time|url|week/.test ( type )
+                && event.keyCode == 13 ) {
+                showAllErrorMessages();
+            }
+        });
+    };
+
+    $( "form" ).each( createAllErrors );
+</script>
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -42,7 +85,7 @@ kiemtra_level_admin(2);
                             <label>Username *</label>
                             <input type="text" name="username" class="form-control" placeholder="Username" autofocus
                                 required
-                                   oninvalid="this.setCustomValidity('Username không được để trống')" oninput="setCustomValidity('')"
+
                             />
                             <?php if (!empty($errors['username'])) echo $errors['username']; ?>
 
@@ -51,7 +94,7 @@ kiemtra_level_admin(2);
                             <label>Password *</label>
                             <input type="password" name="password" class="form-control" placeholder="Password" autofocus
                                    required
-                                   oninvalid="this.setCustomValidity('Password không được để trống')" oninput="setCustomValidity('')" />
+                                  />
                             <?php if (!empty($errors['password'])) echo $errors['password']; ?>
                         </div>
 
