@@ -86,7 +86,6 @@ if (!empty($_POST['add_user']))
 //Độ dài 6-32 ký tự
     $pattern_password="/^([A-Z]){1}([\w_\]!@#$%^&*()]+){5,31}$/";
 
-
     // Validate thong tin và gắn cookie
     $errors = array();
     //Kiểm tra lỗi cho trường username
@@ -97,7 +96,6 @@ if (!empty($_POST['add_user']))
         $errors['username'] = 'Chưa nhập username';
         setcookie('username','Chưa nhập username',time()+1,"/");
         setcookie('username_sticky',$data['username'],time()+1,"/");
-
     }
     //Ngược lại kiểm tra độ dài username
     else if (!preg_match($pattern_username,$data['username']))

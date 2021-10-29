@@ -5,12 +5,11 @@ kiemtra_level_admin(2);
 date_default_timezone_set("Asia/Ho_Chi_Minh");
 $thoigian = date("d/m/Y");
 
-
 //Ở đây không khắt khe như add user admin, mình làm đơn giản là check không được bỏ trống.
 if ($_POST['title']=="") setcookie("title","Tên bài hát không được để trống",time()+1,"/");
 if ($_POST['singer']=="") setcookie("singer","Tên ca sĩ không được để trống",time()+1,"/");
 
-if(!empty($_POST['title'])&&!empty($_POST['loi'])&&!empty($_POST['singer'])&&isset($_POST['btn-submit']))
+if(!empty($_POST['title'])&&!empty($_POST['loi'])&&!empty($_POST['singer']))
 {
     $tieude = $_POST['title'];
     $loi    = $_POST['loi'];
