@@ -37,12 +37,16 @@ kiemtra_level_admin(1);
                     <form action="../chucnang/add_song.php" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label>Tiêu đề nhạc*</label>
-                            <input type="text" name="title" class="form-control" placeholder="Tiêu đề" autofocus required>
+                            <input type="text" name="title" class="form-control" placeholder="Tiêu đề" autofocus value="
+<?php if (isset($_COOKIE['title_sticky'])) echo $_COOKIE['title_sticky'];?>
+">
+                            <?php if (isset($_COOKIE['title'])) echo $_COOKIE['title']; ?>
                         </div>
                         <div class="form-group">
                             <label>Lời bài hát</label>
                             <textarea name="loi" id="" rows="2" class="form-control"
-                                placeholder="Lời bài hát"></textarea>
+                                placeholder="Lời bài hát"><?php if (isset($_COOKIE['loi_sticky'])) echo $_COOKIE['loi_sticky'];?></textarea>
+                            <?php if (isset($_COOKIE['loi'])) echo $_COOKIE['loi']; ?>
                         </div>
                         <div class="form-group">
                             <label>Upload nhạc*</label>
@@ -54,7 +58,10 @@ kiemtra_level_admin(1);
                         </div>
                         <div class="form-group">
                             <label>Ca sĩ*</label>
-                            <textarea name="singer" id="" rows="2" class="form-control" placeholder="Ca sĩ" required></textarea>
+                            <textarea name="singer" id="" rows="2" class="form-control" placeholder="Ca sĩ">
+                                <?php if (isset($_COOKIE['singer_sticky'])) echo $_COOKIE['singer_sticky'];?>
+                            </textarea>
+                            <?php if (isset($_COOKIE['singer'])) echo $_COOKIE['singer']; ?>
                         </div>
                         <input type="submit" class="btn btn-success btn-block" value="Save Nhạc">
                     </form>

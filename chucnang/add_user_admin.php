@@ -87,10 +87,6 @@ if (!empty($_POST['add_user']))
     $pattern_password="/^([A-Z]){1}([\w_\.!@#$%^&*()]+){5,31}$/";
 
 
-
-
-
-
     // Validate thong tin và gắn cookie
     $errors = array();
     //Kiểm tra lỗi cho trường username
@@ -132,7 +128,6 @@ if (!empty($_POST['add_user']))
     if (empty($data['level'])){
         $errors['level'] = 'Chưa nhập level';
     }
-
     // Neu ko co loi thi insert
     if (!$errors){
         add_user(
