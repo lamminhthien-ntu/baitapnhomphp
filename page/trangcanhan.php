@@ -43,17 +43,20 @@ else
         <div style='margin-top:20px'>
         <form action="../chucnang/update_thongtin.php" method="POST" autocomplete="off" enctype="multipart/form-data">
                 <h2 class="font-lato-light">Cập nhật thông tin</h2>
+                <p id='loi_hoten' style='color:tomato;font-size:0.8em'></p>
+                <p id='loi_sdt' style='color:tomato;font-size:0.8em'></p>
+                <p id='loi_matkhau' style='color:tomato;font-size:0.8em'></p>
                 <div class='row flex-ngang'>
                     <div class='form-outline col-md-5'>
                         <div style="margin-left:20px;" class="flex-doc">
                             <span class="material-icons-outlined">badge</span>
-                            <input class="form-in" style="color:white"  minlength="2" maxlength="30" type="text" autocomplete="off" name="hoten" value="<?php echo $ten;?>" placeholder="Tên hiển thị" required/>
+                            <input class="form-in" style="color:white" onkeyup="check_loi()" minlength="2" maxlength="30" type="text" autocomplete="off" id='hoten' name="hoten" value="<?php echo $ten;?>" placeholder="Tên hiển thị" required/>
                         </div>
                     </div>
                     <div class='form-outline col-md-5'>
                         <div style="margin-left:20px;" class="flex-doc">
                             <span class="material-icons-outlined">call</span>
-                            <input class="form-in" style="color:white"  type="number" maxlength="10"  autocomplete="off" name="sdt" value="<?php echo $sdt;?>" placeholder="Số điện thoại" required/>
+                            <input class="form-in" style="color:white" onkeyup="check_loi()" type="number" maxlength="10"  autocomplete="off" id='sdt' name="sdt" value="<?php echo $sdt;?>" placeholder="Số điện thoại" required/>
                         </div>
                     </div>
                 </div>
@@ -79,7 +82,7 @@ else
                     <div class='form-outline col-md-5'>
                         <div style="margin-left:20px;" class="flex-doc">
                             <span class="material-icons-outlined">lock</span>
-                            <input value="<?php echo $pass;?>" class="form-in" style="color:white" type="text" id='ngaysinh' autocomplete="off" name="matkhau" placeholder="Mật Khẩu" required/>
+                            <input value="<?php echo $pass;?>" class="form-in" onkeyup="check_loi()" style="color:white" type="text" id='matkhau' autocomplete="off" name="matkhau" placeholder="Mật Khẩu" required/>
                         </div>
                     </div>
                 </div>
@@ -96,9 +99,61 @@ else
                 </div>
 
                 <div class="flex-ngang">
-                    <button class="w-75 btn" type="submit"  style="background-color: #152D35;color:white">Cập Nhật</button>
+                    <button class="w-75 btn" type="submit" id='btn_submit'   style="background-color: #152D35;color:white">Cập Nhật</button>
                 </div>
             </form>
+            <script>
+                var tenhienthi = document.getElementById('hoten');
+                var sdt        = document.getElementById('sdt');
+                var matkhau    = document.getElementById('matkhau');
+                var loi_hoten  = document.getElementById('loi_hoten');
+                var loi_sdt  = document.getElementById('loi_sdt');
+                var loi_matkhau  = document.getElementById('loi_matkhau');
+                var flag_ten = true;
+                var flag_sdt = true;
+                var flag_matkhau = true;
+                function check_loi(){
+                    var flag = 0;
+                    if(tenhienthi.value.length > 25 || tenhienthi.value.length < 5)
+                    {
+                        loi_hoten.innerHTML = "*Tên hiển thị không hợp lệ. Vui lòng nhập từ 5-25 kí tự";
+                        flag_ten = false;
+                    }   
+                    else
+                    {
+                        loi_hoten.innerHTML = "";
+                        flag_ten = true;
+                    }
+                    if(sdt.value.length != 10)
+                    {
+                        loi_sdt.innerHTML = "*Định dạng số điện thoại không đúng";
+                        flag_sdt = false;
+                    }
+                    else
+                    {
+                        loi_sdt.innerHTML = "";
+                        flag_sdt = true;
+                    }
+                    if(matkhau.value.length <= 6)
+                    {
+                        loi_matkhau.innerHTML = "*Mật khẩu không hợp lệ vui lòng nhập mật khẩu trên 6 kí tụ";
+                        flag_matkhau = false;
+                    }   
+                    else
+                    {
+                        loi_matkhau.innerHTML = "";
+                        flag_matkhau = true;
+                    }
+                    if(flag_ten==true && flag_sdt==true && flag_matkhau==true)
+                    {
+                        document.getElementById('btn_submit').disabled = false;
+                    }
+                    else
+                    {
+                        document.getElementById('btn_submit').disabled = true;
+                    }
+                }
+            </script>
         </div>
     </dialog>
     <!-- side bar -->

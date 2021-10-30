@@ -15,7 +15,7 @@
     <!-- Head Tag -->
     <?php include('head.php'); ?>
 
-    <body id="page-top">
+    <body id="page-top" class="animate__animated animate__backInRight">
         <!-- Page Wrapper -->
         <div id="wrapper">
             <!-- include sidebar-->

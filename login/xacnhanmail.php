@@ -52,6 +52,10 @@ ob_start();
                     {
                         $reload=false;
                     }
+                    if(strlen($mk)<=6)
+                    {
+                        $reload=false;
+                    }
                     // Check đã có người sử dụng tên chưa
                     if(mysqli_num_rows($ketqua) > 0)
                     {

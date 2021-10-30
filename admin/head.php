@@ -19,6 +19,10 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link
+            rel="stylesheet"
+            href="css/animate.min.css"
+    />
     <style>
         .avatar {
             vertical-align: middle;

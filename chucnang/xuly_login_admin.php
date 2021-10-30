@@ -13,7 +13,7 @@ if (isset($_POST['but_submit'])) {
     $username = mysqli_real_escape_string($ketnoi, $_POST['username']);
     $password = mysqli_real_escape_string($ketnoi, $_POST['password']);
     //SQL tạo table user_admin
-//CREATE TABLE mp3.`user_admin` ( id INT NOT NULL AUTO_INCREMENT , username TEXT NOT NULL , password TEXT NOT NULL , level INT NOT NULL , PRIMARY KEY (id)) ENGINE = InnoDB;
+//CREATE TABLE `mp3`.`user_admin` ( `id` INT NOT NULL AUTO_INCREMENT , `username` TEXT NOT NULL , `password` TEXT NOT NULL , `level` INT NOT NULL , PRIMARY KEY (`id`)) ENGINE = InnoDB;
     if ($username != "" && $password != "") {
 
         $sql_query = "select *  from user_admin where username='" . $username . "' and password='" . $password . "'";

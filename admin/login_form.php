@@ -19,6 +19,10 @@ if (isset($_COOKIE["login_error"]))
 <head>
     <!-- Login CSS -->
     <link rel="stylesheet" href="css/login2.css">
+    <link
+            rel="stylesheet"
+            href="css/animate.min.css"
+    />
 </head>
 
 
@@ -27,7 +31,7 @@ if (isset($_COOKIE["login_error"]))
 <div class="container">
 
     <div class="d-flex justify-content-center h-100">
-        <div class="card">
+        <div class="card animate__animated animate__zoomIn">
             <div class="card-header">
                 <h3>Đăng nhập</h3>
                 <div class="d-flex justify-content-end social_icon">
