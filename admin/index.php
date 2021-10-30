@@ -32,7 +32,7 @@
 <!-- Head Tag -->
 <?php include('head.php'); ?>
 
-<body id="page-top" class="animate__animated animate__backInRight">
+<body id="page-top" class="">
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- include sidebar-->
@@ -40,7 +40,7 @@
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
-            <div id="content">
+            <div id="content" class="">
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand-md navbar-light bg-white topbar mb-4 static-top shadow">
                     <!-- Sidebar Toggle (Topbar) -->
