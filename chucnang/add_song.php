@@ -49,7 +49,7 @@ if(!empty($_POST['title'])&&!empty($_POST['singer']))
         $table      = "nhac";
         $col_name   = ['tieude','casi','loi','tenfile','ngay_upload'];
         $col_value  = ["$tieude","$singer","$loi","$name_file_music","$thoigian"];
-        //insert_table($table,$col_name,$col_value);
+        insert_table($table,$col_name,$col_value);
 //        echo "Test dòng if lúc ko up ảnh nhưng có up nhạc";
         header('Location: ../admin/index.php');
         $_SESSION['message']='
